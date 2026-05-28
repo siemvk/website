@@ -54,26 +54,6 @@ function injectHTML(html) {
     // setExternalLinksNewTab(page);
 }
 
-// function setExternalLinksNewTab(container) {
-//     if (!container) return;
-//     const anchors = container.querySelectorAll('a[href]');
-//     const currentHost = window.location.host;
-//     anchors.forEach(a => {
-//         const href = a.getAttribute('href');
-//         if (!href) return;
-//         // ignore javascript:, mailto:, anchors and protocol-relative or root-relative internal links
-//         if (href.startsWith('javascript:') || href.startsWith('#') || href.startsWith('mailto:')) return;
-//         try {
-//             const linkUrl = new URL(href, window.location.href);
-//             if (linkUrl.host !== currentHost) {
-//                 a.setAttribute('target', '_blank');
-//                 a.setAttribute('rel', 'noopener noreferrer');
-//             }
-//         } catch (e) {
-//             // If URL construction fails, skip
-//         }
-//     });
-// }
 
 function activate() {
     // Process the document body and all its descendants
@@ -122,42 +102,42 @@ async function get(url) {
 async function goTo(url, options = {}) {
     const { pushHistory = true } = options;
     let htmlCode;
+    // try {
+    //     htmlCode = await get(`${config.pageDirectory}/${url}/${url}.html`);
+    // } catch (error) {
+    //     if (config && config.debug) {
+    //         console.log(`No HTML file found for ${url}, trying markdown`);
+    //     }
     try {
-        htmlCode = await get(`${config.pageDirectory}/${url}/${url}.html`);
-    } catch (error) {
+        const md = await get(`${config.pageDirectory}/${url}/${url}.md`);
+        htmlCode = marked(md);
+    } catch (mdError) {
         if (config && config.debug) {
-            console.log(`No HTML file found for ${url}, trying markdown`);
+            console.log(`No markdown file found for ${url}`);
         }
-        try {
-            const md = await get(`${config.pageDirectory}/${url}/${url}.md`);
-            htmlCode = marked(md);
-        } catch (mdError) {
-            if (config && config.debug) {
-                console.log(`No markdown file found for ${url}`);
-            }
-            throw error;
-        }
+        throw error;
     }
-    try {
-        const jsCode = await get(`${config.pageDirectory}/${url}/${url}.js`);
-        if (jsCode && document.getElementById(url + "_JS") == undefined) {
-            injectJS(jsCode, url + "_JS");
-        }
-    } catch (error) {
-        if (config.debug) {
-            console.log(`No JS file found for ${url}`);
-        }
-    }
-    try {
-        const CSSCode = await get(`${config.pageDirectory}/${url}/${url}.css`);
-        if (CSSCode && document.getElementById(url + "_CSS") == undefined) {
-            injectCSS(CSSCode, url + "_CSS");
-        }
-    } catch (error) {
-        if (config.debug) {
-            console.log(`No CSS file found for ${url}`);
-        }
-    }
+    // }
+    // try {
+    //     const jsCode = await get(`${config.pageDirectory}/${url}/${url}.js`);
+    //     if (jsCode && document.getElementById(url + "_JS") == undefined) {
+    //         injectJS(jsCode, url + "_JS");
+    //     }
+    // } catch (error) {
+    //     if (config.debug) {
+    //         console.log(`No JS file found for ${url}`);
+    //     }
+    // }
+    // try {
+    //     const CSSCode = await get(`${config.pageDirectory}/${url}/${url}.css`);
+    //     if (CSSCode && document.getElementById(url + "_CSS") == undefined) {
+    //         injectCSS(CSSCode, url + "_CSS");
+    //     }
+    // } catch (error) {
+    //     if (config.debug) {
+    //         console.log(`No CSS file found for ${url}`);
+    //     }
+    // }
     if (config.debug) {
         console.log(htmlCode);
     }
