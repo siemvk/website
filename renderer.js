@@ -112,10 +112,10 @@ async function goTo(url, options = {}) {
         const md = await get(`${config.pageDirectory}/${url}/${url}.md`);
         htmlCode = marked(md);
     } catch (mdError) {
+        htmlCode = `<h1>404 - Page Not Found</h1><p>The page "${url}" could not be found.</p>`;
         if (config && config.debug) {
-            console.log(`No markdown file found for ${url}`);
+            console.log(`No markdown file found for ${url} either, showing 404`);
         }
-        throw error;
     }
     // }
     // try {

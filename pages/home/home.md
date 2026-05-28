@@ -13,3 +13,5 @@ Ik werk graag met Typescript. Ik 3d print soms iets en wil meer met hardware doe
 [over deze website](/over)
 
 [Contact](/contact)
+
+[Librelearn openbaar gemaakte interne documenten](https://librelearn-geheim-cdn.siemvk.nl/)
