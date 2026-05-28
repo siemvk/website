@@ -1,0 +1,46 @@
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    transition: background-color 250ms ease, color 250ms ease;
+}
+
+page {
+    display: block;
+    padding-left: 20%;
+    padding-top: 20px;
+}
+
+.dark {
+    color: white;
+    background-color: rgb(15, 20, 42);
+    transition: background-color 250ms ease, color 250ms ease;
+}
+
+.dark a {
+    color: rgb(100, 149, 237);
+    cursor: pointer;
+}
+
+.dark button {
+    background-color: rgb(40, 60, 96);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    /* fade effect for button state changes */
+    transition: background-color 200ms ease, color 200ms ease, opacity 200ms ease;
+}
+
+.dark button:hover {
+    background-color: rgb(60, 90, 144);
+}
+
+button {
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    /* fade effect for button state changes */
+    transition: background-color 200ms ease, color 200ms ease, opacity 200ms ease;
+}
