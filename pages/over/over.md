@@ -1,7 +1,7 @@
 [Terug](/home)
 # Over deze website
 
-Deze website is gemaakt met een fucking gekke stack
+Deze website is gemaakt met een gekke stack
 
 ✨ custom-framework ✨ 
 

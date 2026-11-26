@@ -1,8 +1,6 @@
 # siemvk.nl
 
-Ik ben Siem, ik geloof zelf dat ik een beetje kan programmeren.
-
-Ik werk graag met Typescript. Ik 3d print soms iets en wil meer met hardware doen
+Als je hier bent weet je toch al wie ik ben.
 
 ## Projecten
 
@@ -14,4 +12,3 @@ Ik werk graag met Typescript. Ik 3d print soms iets en wil meer met hardware doe
 
 [Contact](/contact)
 
-[Librelearn openbaar gemaakte interne documenten](https://librelearn-geheim-cdn.siemvk.nl/)
